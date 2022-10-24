@@ -4,11 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 import lombok.AllArgsConstructor;
@@ -29,12 +25,10 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Jogador implements Serializable {
 
-     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idJogador;
 
-    
     @Column(name = "nome", nullable = false)
     private String nome;
 
@@ -44,6 +38,7 @@ public class Jogador implements Serializable {
     @Column(name = "telefone", nullable = false)
     private String telefone;
 
-    private List<Anuncio> anuncios = new ArrayList();
+    @OneToMany
+    private List<Anuncio> anuncios;
     
 }

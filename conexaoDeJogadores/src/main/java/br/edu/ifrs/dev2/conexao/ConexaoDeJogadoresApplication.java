@@ -1,4 +1,4 @@
-package br.edu.ifrs.dev2.conexao.conexaoDeJogadores;
+package br.edu.ifrs.dev2.conexao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
