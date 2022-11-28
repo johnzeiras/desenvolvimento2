@@ -12,7 +12,6 @@ import br.edu.ifrs.dev2.conexao.Service.GameService;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
