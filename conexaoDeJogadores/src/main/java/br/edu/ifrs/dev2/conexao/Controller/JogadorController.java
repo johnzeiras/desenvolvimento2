@@ -116,7 +116,7 @@ public class JogadorController {
 // DELETE USANDO LAMBDA SÓ DESCOMENTAR E TESTAR PARA FUNCIONAR IMPORTAR LIBS SE FOR PRECISO	
     // @DeleteMapping("/{id}")
     // @ResponseStatus(HttpStatus.NO_CONTENT)
-    // public void removerProduto(Long id){
+    // public void removerJogador(Long id){
     //     jogadorService.pesquisarJogador(id)
     //         .map(jogador ->{
     //             jogadorService.removerJogador(jogador.getIdJogador());
@@ -128,7 +128,7 @@ public class JogadorController {
 	//METODO PARA ATUALIZAR 
    /* @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void AtualizarProduto(@PathVariable("id") Long id, @RequestBody Jogador jogador){
+    public void AtualizarJogador(@PathVariable("id") Long id, @RequestBody Jogador jogador){
         jogadorService.pesquisarJogador(id)
         .map(jogadorBase -> {
             modelMapper.map(jogador, jogadorBase);
