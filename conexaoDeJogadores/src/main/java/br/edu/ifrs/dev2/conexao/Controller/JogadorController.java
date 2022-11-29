@@ -1,4 +1,5 @@
 package br.edu.ifrs.dev2.conexao.Controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,25 +30,19 @@ import br.edu.ifrs.dev2.conexao.Repository.JogadorRepository;
 import br.edu.ifrs.dev2.conexao.Service.JogadorService;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/Jogador")
 public class JogadorController {
     //CASO JWT NAO FUNCIONE
     private int details_code = 0;
 	//CASO JWT NAO FUNCIONE
 	private String details_message = "";
-    @Autowired
+
     private final JogadorRepository jogadorRepository;
 
     private final PasswordEncoder encoder;
 
-    @Autowired
-    private JogadorService jogadorService;
-
-    public JogadorController(JogadorRepository jogadorRepository, PasswordEncoder encoder) {
-        this.jogadorRepository = jogadorRepository;
-        this.encoder = encoder;
-    }
-
+    private final JogadorService jogadorService;
 
     //VALIDA USANDO JWT 
     @GetMapping("/validarSenha")
@@ -71,8 +66,6 @@ public class JogadorController {
         usuario.setPassword(encoder.encode(usuario.getPassword()));
         return ResponseEntity.ok(jogadorRepository.save(usuario));
     }
-
-   
 
 
     @PostMapping
@@ -133,15 +126,17 @@ public class JogadorController {
 
 
 	//METODO PARA ATUALIZAR 
-    @PutMapping("/{id}")
+   /* @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void AtualizarProduto(@PathVariable("id") Long id, @RequestBody Jogador jogador){
         jogadorService.pesquisarJogador(id)
-        .map(jogadorBase ->{
+        .map(jogadorBase -> {
             modelMapper.map(jogador, jogadorBase);
             return Void.TYPE;
         }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Jogador não encontrado."));
     }
+    */
+
 
 
    //SALVA JOGADOR MODO PADRÃO  
