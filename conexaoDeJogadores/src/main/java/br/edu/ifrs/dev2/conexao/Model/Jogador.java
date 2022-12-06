@@ -1,17 +1,13 @@
 package br.edu.ifrs.dev2.conexao.Model;
 
-import java.io.Serializable;
-
-import java.util.List;
-
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.List;
 
 
 @Data
@@ -19,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Jogador implements Serializable {
+public class Jogador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,12 +32,7 @@ public class Jogador implements Serializable {
 
     @OneToMany
     private List<Anuncio> anuncios;
-    
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(unique = true)
     private String login;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
