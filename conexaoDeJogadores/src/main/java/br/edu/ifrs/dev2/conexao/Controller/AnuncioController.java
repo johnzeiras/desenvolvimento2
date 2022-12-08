@@ -20,4 +20,10 @@ public class AnuncioController {
     public AnuncioResponse postAnuncio(@RequestBody AnuncioRequest anuncio) {
         return this.anuncioService.save(anuncio);
    }
+   @GetMapping
+   @ResponseStatus(HttpStatus.OK)
+   public List<Anuncio> listaAnuncio(){
+       return anuncioService.listarAnuncio();
+   }
+   
 }

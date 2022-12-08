@@ -32,5 +32,8 @@ public class AnuncioService {
                 .build();
     }
 
+    public List<Anuncio> listarAnuncio(){
+        return anuncioRepository.findAll();
+    }
 
 }
