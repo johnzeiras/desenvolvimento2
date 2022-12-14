@@ -1,11 +1,13 @@
 package br.edu.ifrs.dev2.conexao.Model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -30,8 +32,13 @@ public class Anuncio implements Serializable {
             @JoinColumn(name = "jogador_id")
     }
     )
+    @NotNull
+    @NotBlank (message = "Informe um jogador")
     private Jogador jogador;
+
     @ManyToOne
+    @NotNull
+    @NotBlank (message = "Informe um jogo")
     private Game game;
     /*
         @Embedded

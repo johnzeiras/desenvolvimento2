@@ -5,7 +5,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,8 +25,11 @@ public class Game implements Serializable {
     private Long idGame;
 
     @Column(name = "nomeGame", nullable = false)
+    @NotNull
+    @NotBlank(message = "Digite um nome válido para o jogo")
     private String nomeGame;
 
+    @NotNull
     private String image;
 
     @OneToMany
