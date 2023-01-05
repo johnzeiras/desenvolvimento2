@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class AnuncioController {
     private final AnuncioService anuncioService;
 
     @PostMapping
-    public AnuncioResponse postAnuncio(@RequestBody AnuncioRequest anuncio) {
+    public AnuncioResponse postAnuncio(@RequestBody @Valid AnuncioRequest anuncio) {
         return this.anuncioService.save(anuncio);
    }
    @GetMapping

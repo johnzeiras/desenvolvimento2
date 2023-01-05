@@ -4,6 +4,7 @@ import br.edu.ifrs.dev2.conexao.Model.Jogador;
 import br.edu.ifrs.dev2.conexao.Repository.JogadorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,24 +29,28 @@ public class JogadorService {
         return user;
     }
 
-    public Jogador salvarJogador(Jogador jogador){
+    public Jogador salvarJogador(Jogador jogador) {
         return jogadorRepository.save(jogador);
     }
 
-    public List<Jogador> listarJogador(){
+    public List<Jogador> listarJogador() {
         return jogadorRepository.findAll();
     }
 
-    public Jogador pesquisarJogadorPorId(Long id){
+    public Jogador pesquisarJogadorPorId(Long id) {
         return jogadorRepository.findById(id).get();
     }
 
-    public Optional<Jogador> pesquisarJogador(Long id){
+    public Optional<Jogador> pesquisarJogador(Long id) {
         return jogadorRepository.findById(id);
     }
 
-    public void removerJogador(Long id){
+    public void removerJogador(Long id) {
         jogadorRepository.deleteById(id);
+    }
+
+    public String getUserName() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
 }

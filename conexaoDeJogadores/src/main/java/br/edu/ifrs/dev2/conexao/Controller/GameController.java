@@ -1,5 +1,7 @@
 package br.edu.ifrs.dev2.conexao.Controller;
 
+import br.edu.ifrs.dev2.conexao.Model.dto.AnuncioResponse;
+import br.edu.ifrs.dev2.conexao.Model.dto.GameResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import br.edu.ifrs.dev2.conexao.Service.GameService;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -37,7 +40,7 @@ public class GameController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Game> listaJogador(){
+    public List<GameResponse> listaJogador(){
         return gameService.listargGames();
     }
 

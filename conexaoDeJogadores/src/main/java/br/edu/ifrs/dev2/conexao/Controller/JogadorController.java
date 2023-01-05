@@ -29,6 +29,8 @@ import br.edu.ifrs.dev2.conexao.Model.Jogador;
 import br.edu.ifrs.dev2.conexao.Repository.JogadorRepository;
 import br.edu.ifrs.dev2.conexao.Service.JogadorService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/Jogador")
@@ -62,7 +64,7 @@ public class JogadorController {
 
    //SALVA USANDO JWT 
     @PostMapping("/salvar")
-    public ResponseEntity<Jogador> salvar(@RequestBody Jogador usuario) {
+    public ResponseEntity<Jogador> salvar(@RequestBody @Valid Jogador usuario) {
         usuario.setPassword(encoder.encode(usuario.getPassword()));
         return ResponseEntity.ok(jogadorRepository.save(usuario));
     }

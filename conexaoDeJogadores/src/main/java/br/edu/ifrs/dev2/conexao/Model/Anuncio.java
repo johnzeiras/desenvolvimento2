@@ -33,12 +33,10 @@ public class Anuncio implements Serializable {
     }
     )
     @NotNull
-    @NotBlank (message = "Informe um jogador")
     private Jogador jogador;
 
     @ManyToOne
     @NotNull
-    @NotBlank (message = "Informe um jogo")
     private Game game;
     /*
         @Embedded

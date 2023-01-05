@@ -49,6 +49,7 @@ public class Jogador {
     private String login;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotBlank
     private String password;
 
 }
