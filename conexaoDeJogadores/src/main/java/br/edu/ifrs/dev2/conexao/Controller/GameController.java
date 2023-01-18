@@ -46,32 +46,15 @@ public class GameController {
 
     @GetMapping("/{gameId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Game> buscar(@PathVariable Long gameID) {
-        Game game = gameService.pesquisarGamePorId(gameID);
-
+    public ResponseEntity<GameResponse> buscar(@PathVariable Long gameId) {
+        var game = gameService.pesquisarGamePorId(gameId);
         if (game != null) {
             return ResponseEntity.ok(game);
         }
-
         return ResponseEntity.notFound().build();
     }
 
-    	// DELETA JOGADOR SEM LAMBDA
-        @DeleteMapping("/{gameId}")
-        @ResponseStatus(HttpStatus.NO_CONTENT)
-        public ResponseEntity<Game> remover(@PathVariable Long gameID) {
-            try {
-                Game game = gameService.pesquisarGamePorId(gameID);
-    
-                if (game != null) {
-                    gameService.removerGame(gameID);
-                    return ResponseEntity.noContent().build();
-                }
-                return ResponseEntity.notFound().build();
-            } catch (DataIntegrityViolationException e) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).build();
-            }
-        }
+
     // DELETA GAME USANDO LAMBDA SÓ DESCOMENTAR E TESTAR PARA FUNCIONAR IMPORTAR LIBS SE FOR PRECISO	
     // @DeleteMapping("/{id}")
     // @ResponseStatus(HttpStatus.NO_CONTENT)

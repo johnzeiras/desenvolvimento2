@@ -42,8 +42,20 @@ public class GameService {
                 ).collect(Collectors.toList());
     }
 
-    public Game pesquisarGamePorId(Long id){
-        return gameRepository.findById(id).get();
+    public GameResponse pesquisarGamePorId(Long id){
+        var game = gameRepository.findById(id).get();
+       return GameResponse.builder()
+                .idGame(game.getIdGame())
+                .nomeGame(game.getNomeGame())
+                .image(game.getImage())
+                .anuncios(game.getAnuncios()
+                        .stream()
+                        .map(anuncio -> AnuncioResponse.builder()
+                                .player(anuncio.getJogador().getNome())
+                                .diasSemanas(anuncio.getDiasSemanas())
+                                .build())
+                        .collect(Collectors.toList()))
+                .build();
     }
 
     public Optional<Game> pesquisarGame(Long id){
