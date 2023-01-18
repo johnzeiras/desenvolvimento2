@@ -34,6 +34,7 @@ public class GameService {
                                 .anuncios(game.getAnuncios()
                                         .stream()
                                         .map(anuncio -> AnuncioResponse.builder()
+                                                .idDiscord(anuncio.getJogador().getIdDiscord())
                                                 .player(anuncio.getJogador().getNome())
                                                 .diasSemanas(anuncio.getDiasSemanas())
                                                 .build())
@@ -44,6 +45,7 @@ public class GameService {
 
     public GameResponse pesquisarGamePorId(Long id){
         var game = gameRepository.findById(id).get();
+        game.getAnuncios().forEach(x -> System.out.println(x.getJogador().getIdDiscord()));
        return GameResponse.builder()
                 .idGame(game.getIdGame())
                 .nomeGame(game.getNomeGame())
@@ -51,6 +53,7 @@ public class GameService {
                 .anuncios(game.getAnuncios()
                         .stream()
                         .map(anuncio -> AnuncioResponse.builder()
+                                .idDiscord(anuncio.getJogador().getIdDiscord())
                                 .player(anuncio.getJogador().getNome())
                                 .diasSemanas(anuncio.getDiasSemanas())
                                 .build())

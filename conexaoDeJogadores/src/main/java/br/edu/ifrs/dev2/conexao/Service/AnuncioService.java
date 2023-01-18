@@ -41,8 +41,10 @@ public class AnuncioService {
         anuncioRepository.save(auncioRequest);
         game.getAnuncios().add(auncioRequest);
         this.gameRepository.save(game);
-        return AnuncioResponse.builder().player(player.getNome())
+        return AnuncioResponse.builder()
+                .player(player.getNome())
                 .diasSemanas(daysWeek)
+                .idDiscord(player.getIdDiscord())
                 .build();
     }
 

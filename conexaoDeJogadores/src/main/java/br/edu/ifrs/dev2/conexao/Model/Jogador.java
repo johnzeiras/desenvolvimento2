@@ -43,6 +43,10 @@ public class Jogador {
     @Size (min = 10, max = 11)
     private String telefone;
 
+    @NotNull
+    @NotBlank
+    private String idDiscord;
+
     @OneToMany
     private List<Anuncio> anuncios;
 

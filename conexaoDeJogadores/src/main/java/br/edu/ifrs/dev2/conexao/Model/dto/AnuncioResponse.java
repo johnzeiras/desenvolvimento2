@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class AnuncioResponse {
     public String player;
+    public String idDiscord;
     //public List<Date> horaDisponivel;
     public List<DaysWeek> diasSemanas;
 }
